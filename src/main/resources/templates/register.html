@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template.html">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4 well well-sm">
+
+                <h3 class="form-signin-heading" th:text="Signup"></h3>
+
+                <form th:action="@{/addUser}" th:object="${user}" method="post">
+
+                    <p data-th-each="err : ${#fields.allErrors()}" data-th-text="${err}" class="error">
+                        Invalid input.
+                    </p>
+
+                    <div class="form-group">
+                        <input class="form-control"  name="name" placeholder="Name" type="text" th:field="*{username}" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" name="email" placeholder="Email" type="email" th:field="*{email}" required/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="password" placeholder="Password" type="password" th:field="*{password}" required/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="matchingPassword" placeholder="Confirm Password" type="password"  th:field="*{matchingPassword}" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                    </div>
+
+                </form>
+
+                <div class="text-center">Already have an account? <a th:href="@{/login}">Login here</a></div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

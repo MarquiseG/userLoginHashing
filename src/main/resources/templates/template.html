@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<header>
+    <div class="container">
+        <nav class="navbar navbar-default" role="navigation">
+
+            <ul class="nav navbar-nav  navbar-right">
+
+                <li><a th:href="@{/home}">Home</a></li>
+
+                <li sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/addUser}"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+                </li>
+
+                <li sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                </li>
+
+            </ul>
+        </nav>
+
+    </div>
+</header>
+<section layout:fragment="content"></section>
+</body>
+</html>
